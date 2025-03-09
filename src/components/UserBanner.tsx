@@ -8,7 +8,7 @@ interface UserBannerProps {
 
 const UserBanner: React.FC<UserBannerProps> = ({ username }) => {
   return (
-    <div className="w-full py-2 animate-fade-in mt-16"> {/* Added margin top to fix overlap with header */}
+    <div className="w-full py-2 animate-fade-in mt-16 z-10"> {/* Added z-index to fix overlap issue */}
       <div className="flex items-center space-x-3">
         <div className="w-10 h-10 rounded-full bg-brand-green-100 flex items-center justify-center">
           <User className="w-5 h-5 text-brand-green-700" />

@@ -20,14 +20,18 @@ const Index: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="app-container">
+      <main className="app-container px-4">
         <UserBanner username={userData.username} />
-        <WalletCard 
-          cashbackAmount={userData.cashback} 
-          pointsAmount={userData.points} 
-        />
+        <div className="mt-1">
+          <WalletCard 
+            cashbackAmount={userData.cashback} 
+            pointsAmount={userData.points} 
+          />
+        </div>
         <PromotionCarousel />
-        <QuickActions />
+        <div className="mt-2">
+          <QuickActions />
+        </div>
         <StorePreview />
         <PartnersPreview />
       </main>

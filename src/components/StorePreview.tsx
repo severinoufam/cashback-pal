@@ -35,8 +35,11 @@ const StorePreview: React.FC = () => {
   return (
     <div className="mt-6 animate-fade-in">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-lg font-medium text-gray-800">Loja</h2>
-        <Link to="/store" className="flex items-center text-sm text-brand-green-600 hover:text-brand-green-700 transition-colors">
+        <h2 className="text-xl font-bold text-gray-800 flex items-center">
+          <ShoppingBag className="w-5 h-5 mr-2 text-brand-green-600" />
+          Loja
+        </h2>
+        <Link to="/store" className="flex items-center text-sm text-brand-green-600 hover:text-brand-green-700 transition-colors font-medium">
           Ver todos
           <ChevronRight className="w-4 h-4 ml-1" />
         </Link>
@@ -45,22 +48,25 @@ const StorePreview: React.FC = () => {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {storeItems.map((item) => (
           <Link key={item.id} to={`/store/${item.id}`} className="group">
-            <div className="rounded-xl overflow-hidden bg-white shadow-sm border border-gray-100 transition-all duration-300 group-hover:shadow-md group-hover:scale-[1.02]">
-              <div className="h-28 bg-gray-100 relative">
+            <div className="rounded-xl overflow-hidden bg-white shadow-md border border-gray-100 transition-all duration-300 group-hover:shadow-lg group-hover:scale-[1.03]">
+              <div className="h-32 bg-gray-100 relative">
                 <img 
                   src={item.image} 
                   alt={item.name} 
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
+                {item.price.type === 'points' && (
+                  <div className="absolute top-2 right-2 bg-brand-orange-500 text-white text-xs font-bold py-0.5 px-2 rounded-full">PONTOS</div>
+                )}
               </div>
               <div className="p-3">
                 <h3 className="text-sm font-medium text-gray-800 line-clamp-1">{item.name}</h3>
-                <div className="mt-1 text-xs font-medium">
+                <div className="mt-1 font-medium">
                   {item.price.type === 'cash' ? (
-                    <span className="text-brand-green-600">R$ {item.price.value.toFixed(2)}</span>
+                    <span className="text-brand-green-600 text-sm">R$ {item.price.value.toFixed(2)}</span>
                   ) : (
-                    <span className="text-brand-orange-600">{item.price.value.toLocaleString()} pts</span>
+                    <span className="text-brand-orange-600 text-sm">{item.price.value.toLocaleString()} pts</span>
                   )}
                 </div>
               </div>

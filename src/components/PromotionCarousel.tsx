@@ -66,8 +66,8 @@ const PromotionCarousel: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative mt-6 overflow-hidden rounded-2xl shadow-md animate-fade-in">
-      <div className="flex h-48 transition-transform ease-out duration-500" 
+    <div className="relative mt-4 overflow-hidden rounded-2xl shadow-md animate-fade-in transform hover:scale-[1.01] transition-all duration-300">
+      <div className="flex h-56 transition-transform ease-out duration-500" 
            style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {promotions.map((promo) => (
           <div 
@@ -75,11 +75,14 @@ const PromotionCarousel: React.FC = () => {
             className={`relative flex-shrink-0 w-full h-full bg-gradient-to-r ${promo.color}`}
           >
             <div className="absolute inset-0 bg-black opacity-30"></div>
-            <div className="relative z-10 flex flex-col justify-end h-full p-4 text-white">
-              <h3 className="text-xl font-bold">{promo.title}</h3>
-              <p className="text-sm">{promo.description}</p>
+            <div className="relative z-10 flex flex-col justify-end h-full p-5 text-white">
+              <h3 className="text-2xl font-bold mb-1">{promo.title}</h3>
+              <p className="text-sm mb-3">{promo.description}</p>
+              <button className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-4 py-1.5 rounded-full text-sm font-medium w-fit transition-all duration-300">
+                Ver oferta
+              </button>
             </div>
-            <div className="absolute top-0 right-0 w-32 h-full opacity-10">
+            <div className="absolute top-0 right-0 w-48 h-full opacity-20">
               <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{ backgroundImage: `url(${promo.image})` }}></div>
             </div>
           </div>
@@ -90,7 +93,7 @@ const PromotionCarousel: React.FC = () => {
         {promotions.map((_, index) => (
           <button
             key={index}
-            className={`w-2 h-2 rounded-full transition-colors ${
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${
               index === currentIndex ? 'bg-white' : 'bg-white bg-opacity-40'
             }`}
             onClick={() => setCurrentIndex(index)}

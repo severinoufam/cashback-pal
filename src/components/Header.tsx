@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md border-b border-gray-100 animate-fade-in">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-white bg-opacity-80 backdrop-blur-md border-b border-gray-100 animate-fade-in">
       <div className="max-w-screen-lg mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
           <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-brand-green-500 flex items-center justify-center shadow-lg">
