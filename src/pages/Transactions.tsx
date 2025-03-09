@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import BottomNavigation from '../components/layout/BottomNavigation';
 
