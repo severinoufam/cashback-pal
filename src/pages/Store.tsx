@@ -1,73 +1,18 @@
 
 import React, { useState } from 'react';
 import { ShoppingBag, Search, Filter, ChevronRight } from 'lucide-react';
-import Header from '../components/Header';
-import BottomNavigation from '../components/BottomNavigation';
-
-interface StoreItem {
-  id: string;
-  name: string;
-  image: string;
-  description: string;
-  price: { type: 'cash' | 'points', value: number };
-  category: string;
-}
+import Header from '../components/layout/Header';
+import BottomNavigation from '../components/layout/BottomNavigation';
+import { getMockStoreItems } from '../services/mockDataService';
+import { formatCurrency } from '../utils/formatters';
+import { StoreItem } from '../types/models';
 
 const Store: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   
-  // Mock data for store items
-  const storeItems: StoreItem[] = [
-    {
-      id: '1',
-      name: 'Fone de Ouvido Bluetooth',
-      image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-      description: 'Fone sem fio com cancelamento de ruído e bateria de longa duração.',
-      price: { type: 'cash', value: 129.90 },
-      category: 'electronics',
-    },
-    {
-      id: '2',
-      name: 'Smartwatch Fitness',
-      image: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-      description: 'Relógio inteligente com monitoramento cardíaco e GPS integrado.',
-      price: { type: 'points', value: 15000 },
-      category: 'electronics',
-    },
-    {
-      id: '3',
-      name: 'Power Bank 10000mAh',
-      image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-      description: 'Carregador portátil de alta capacidade com múltiplas saídas USB.',
-      price: { type: 'cash', value: 89.90 },
-      category: 'electronics',
-    },
-    {
-      id: '4',
-      name: 'Mochila Resistente à Água',
-      image: 'https://images.unsplash.com/photo-1622560480654-d96214fdc887?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-      description: 'Mochila impermeável com compartimento para laptop e múltiplos bolsos.',
-      price: { type: 'cash', value: 149.90 },
-      category: 'accessories',
-    },
-    {
-      id: '5',
-      name: 'Câmera de Segurança Wi-Fi',
-      image: 'https://images.unsplash.com/photo-1580745283059-4361334feb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-      description: 'Câmera HD com visão noturna e detecção de movimento.',
-      price: { type: 'points', value: 25000 },
-      category: 'home',
-    },
-    {
-      id: '6',
-      name: 'Caixa de Som Bluetooth',
-      image: 'https://images.unsplash.com/photo-1589003511276-5a42b53a0175?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-      description: 'Caixa de som portátil com áudio de alta qualidade e resistente à água.',
-      price: { type: 'cash', value: 199.90 },
-      category: 'electronics',
-    },
-  ];
+  // Get mock store items
+  const storeItems = getMockStoreItems();
   
   const categories = [
     { id: 'all', name: 'Todos' },
@@ -134,6 +79,14 @@ const Store: React.FC = () => {
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
+                {item.price.type === 'points' && (
+                  <div className="absolute top-2 right-2 bg-brand-orange-500 text-white text-xs font-bold py-0.5 px-2 rounded-full">PONTOS</div>
+                )}
+                {!item.inStock && (
+                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <span className="text-white font-medium text-sm px-2 py-1 bg-gray-800 bg-opacity-75 rounded">Indisponível</span>
+                  </div>
+                )}
               </div>
               <div className="p-3">
                 <h3 className="text-sm font-medium text-gray-800 line-clamp-1">{item.name}</h3>
@@ -141,7 +94,7 @@ const Store: React.FC = () => {
                 <div className="mt-2 flex justify-between items-center">
                   <div className="text-sm font-medium">
                     {item.price.type === 'cash' ? (
-                      <span className="text-brand-green-600">R$ {item.price.value.toFixed(2)}</span>
+                      <span className="text-brand-green-600">{formatCurrency(item.price.value)}</span>
                     ) : (
                       <span className="text-brand-orange-600">{item.price.value.toLocaleString()} pts</span>
                     )}

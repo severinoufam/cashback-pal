@@ -1,13 +1,13 @@
 
 import React from 'react';
-import Header from '../components/Header';
-import UserBanner from '../components/UserBanner';
-import WalletCard from '../components/WalletCard';
-import PromotionCarousel from '../components/PromotionCarousel';
-import StorePreview from '../components/StorePreview';
-import PartnersPreview from '../components/PartnersPreview';
-import BottomNavigation from '../components/BottomNavigation';
-import QuickActions from '../components/QuickActions';
+import Header from '../components/layout/Header';
+import UserBanner from '../components/home/UserBanner';
+import WalletCard from '../components/home/WalletCard';
+import PromotionCarousel from '../components/home/PromotionCarousel';
+import StorePreview from '../components/home/StorePreview';
+import PartnersPreview from '../components/home/PartnersPreview';
+import BottomNavigation from '../components/layout/BottomNavigation';
+import QuickActions from '../components/home/QuickActions';
 
 const Index: React.FC = () => {
   // Mock data

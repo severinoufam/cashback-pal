@@ -1,0 +1,88 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-green-50: #f0fdf4;
+    --brand-green-100: #dcfce7;
+    --brand-green-200: #bbf7d0;
+    --brand-green-300: #86efac;
+    --brand-green-400: #4ade80;
+    --brand-green-500: #22c55e;
+    --brand-green-600: #16a34a;
+    --brand-green-700: #15803d;
+    --brand-green-800: #166534;
+    --brand-green-900: #14532d;
+
+    --brand-orange-50: #fff7ed;
+    --brand-orange-100: #ffedd5;
+    --brand-orange-200: #fed7aa;
+    --brand-orange-300: #fdba74;
+    --brand-orange-400: #fb923c;
+    --brand-orange-500: #f97316;
+    --brand-orange-600: #ea580c;
+    --brand-orange-700: #c2410c;
+    --brand-orange-800: #9a3412;
+    --brand-orange-900: #7c2d12;
+  }
+}
+
+@layer components {
+  /* Layout Containers */
+  .app-container {
+    @apply max-w-screen-lg mx-auto pb-24 pt-2;
+  }
+  
+  .page-container {
+    @apply max-w-screen-lg mx-auto px-4 pb-24 pt-20;
+  }
+  
+  /* Shadow styles */
+  .shadow-glass {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  }
+  
+  .shadow-glass-md {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-in-out;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+  
+  .animate-slide-in-bottom {
+    animation: slide-in-bottom 0.3s ease-out;
+  }
+  
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s infinite;
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes scale-in {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes slide-in-bottom {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes pulse-subtle {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+}

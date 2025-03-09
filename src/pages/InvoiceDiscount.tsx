@@ -2,10 +2,14 @@
 import React from 'react';
 import { FileText, ArrowLeft, Percent } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import BottomNavigation from '../components/BottomNavigation';
+import Header from '../components/layout/Header';
+import BottomNavigation from '../components/layout/BottomNavigation';
+import { getMockUser } from '../services/mockDataService';
+import { formatCurrency } from '../utils/formatters';
 
 const InvoiceDiscount: React.FC = () => {
+  const userData = getMockUser();
+  
   return (
     <>
       <Header />
@@ -30,7 +34,9 @@ const InvoiceDiscount: React.FC = () => {
           <div className="bg-brand-green-50 p-4 rounded-lg mb-4">
             <div className="flex justify-between items-center mb-3">
               <span className="text-sm text-gray-600">Cashback disponível:</span>
-              <span className="text-lg font-semibold text-brand-green-600">R$ 256,78</span>
+              <span className="text-lg font-semibold text-brand-green-600">
+                {formatCurrency(userData.cashback)}
+              </span>
             </div>
             
             <div className="flex justify-between items-center">
