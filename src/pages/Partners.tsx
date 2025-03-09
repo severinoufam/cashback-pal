@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { Users, Search, MapPin, Phone, ChevronRight } from 'lucide-react';
-import Header from '../components/Header';
-import BottomNavigation from '../components/BottomNavigation';
+import Header from '../components/layout/Header';
+import BottomNavigation from '../components/layout/BottomNavigation';
 
 interface Partner {
   id: string;

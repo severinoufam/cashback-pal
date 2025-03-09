@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { FileCode, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import BottomNavigation from '../components/BottomNavigation';
+import Header from '../components/layout/Header';
+import BottomNavigation from '../components/layout/BottomNavigation';
 
 const Rules: React.FC = () => {
   return (

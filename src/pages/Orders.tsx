@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { ClipboardList, Search, Package, Check, Clock, Truck, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react';
-import Header from '../components/Header';
-import BottomNavigation from '../components/BottomNavigation';
+import Header from '../components/layout/Header';
+import BottomNavigation from '../components/layout/BottomNavigation';
 
 interface OrderItem {
   id: string;
@@ -35,7 +34,6 @@ const Orders: React.FC = () => {
     }
   };
   
-  // Mock data for orders
   const orders: Order[] = [
     {
       id: 'ORD-2023-11-001',
@@ -126,7 +124,6 @@ const Orders: React.FC = () => {
     }
   ];
   
-  // Filter orders based on search query and status filter
   const filteredOrders = orders.filter(order => 
     (order.id.toLowerCase().includes(searchQuery.toLowerCase()) || 
      order.items.some(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()))) &&
