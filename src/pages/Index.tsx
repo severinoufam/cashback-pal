@@ -1,13 +1,36 @@
-// Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import React from 'react';
+import Header from '../components/Header';
+import UserBanner from '../components/UserBanner';
+import WalletCard from '../components/WalletCard';
+import PromotionCarousel from '../components/PromotionCarousel';
+import StorePreview from '../components/StorePreview';
+import PartnersPreview from '../components/PartnersPreview';
+import BottomNavigation from '../components/BottomNavigation';
+
+const Index: React.FC = () => {
+  // Mock data
+  const userData = {
+    username: 'Ana Silva',
+    cashback: 256.78,
+    points: 3450,
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Header />
+      <main className="app-container">
+        <UserBanner username={userData.username} />
+        <WalletCard 
+          cashbackAmount={userData.cashback} 
+          pointsAmount={userData.points} 
+        />
+        <PromotionCarousel />
+        <StorePreview />
+        <PartnersPreview />
+      </main>
+      <BottomNavigation />
+    </>
   );
 };
 
