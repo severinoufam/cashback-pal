@@ -7,6 +7,7 @@ import PromotionCarousel from '../components/PromotionCarousel';
 import StorePreview from '../components/StorePreview';
 import PartnersPreview from '../components/PartnersPreview';
 import BottomNavigation from '../components/BottomNavigation';
+import QuickActions from '../components/QuickActions';
 
 const Index: React.FC = () => {
   // Mock data
@@ -26,6 +27,7 @@ const Index: React.FC = () => {
           pointsAmount={userData.points} 
         />
         <PromotionCarousel />
+        <QuickActions />
         <StorePreview />
         <PartnersPreview />
       </main>
